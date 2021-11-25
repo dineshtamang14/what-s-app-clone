@@ -21,7 +21,7 @@ function Login() {
             <Button onClick={signIn}>Sign in with Google</Button>
         </LoginContainer>
         </Container>
-    )
+    );
 }
 
 export default Login;
