@@ -2,11 +2,9 @@ import '../styles/globals.css';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
 import Loading from '../components/Loading';
-import firebase from "firebase/app";
 import { useEffect } from "react";
 import Login from "./login";
-import "firebase/compat/firestore";
-import "firebase/compat/auth";
+import firebase from 'firebase';
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
@@ -16,6 +14,7 @@ function MyApp({ Component, pageProps }) {
       db.collection('users').doc(user.uid).set({
         email: user.email,
         lastSeen: firebase.firestore.FieldValue.serverTimeStamp(),
+        photoURL: user.photoURL
       }, { merge: true })
     }
   }, [user])
